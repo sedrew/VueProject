@@ -3,7 +3,12 @@
     <div class="container cont">
       <h1>Palindrome</h1>
       <br>
-      <input class="form-control col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5" v-model="texts" placeholder="Введите строку.">
+      <input
+        class="form-control col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5"
+        v-model="texts"
+        @click="visible=false"
+        placeholder="Введите строку."
+      >
     </div>
     <div class="container cont_btn">
       <button type="button" class="btn btn-danger">Reset</button>
@@ -20,6 +25,7 @@
         {{mess.text}}
       </div>
     </slide-up-down>
+    
   </div>
 </template>
 
@@ -37,8 +43,8 @@ export default {
     };
   },
   computed: {
-    test(){
-      return this.$store.state.name
+    test() {
+      return this.$store.state.name;
     }
   },
   methods: {
@@ -72,6 +78,8 @@ export default {
 </script>
 
 <style>
+
+
 .cont {
   display: flex;
   flex-direction: column;

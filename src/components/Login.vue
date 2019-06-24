@@ -39,6 +39,9 @@ export default {
 
 
 <style>
+label {
+  color:black !important;
+}
 .btn_gr {
   margin-top: 20px;
   display: flex;
