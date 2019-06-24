@@ -1,5 +1,5 @@
 <template>
-  <div :class="this.$store.state.theme" class="main-layout">
+  <div :class="this.$store.state.theme" id="qwe" class="main-layout" style="height:100%">
     <navbar></navbar>
     <transition name="item" mode="out-in">
       <router-view></router-view>
@@ -14,13 +14,12 @@ export default {
   data() {
     return {
       theme: {
-        color:"",
-        name:"Dark"
+        color: "",
+        name: "Dark"
       }
     };
   },
-  methods: {
-  }
+  methods: {}
 };
 </script>
 
@@ -29,7 +28,6 @@ export default {
 .body_dark {
   background-color: rgb(32, 32, 32);
 }
-
 
 .item-enter-active,
 .item-leave-active {
@@ -52,5 +50,4 @@ export default {
   background-color: rgb(32, 32, 32);
   color: white;
 }
-
 </style>
