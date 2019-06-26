@@ -25,8 +25,6 @@ export default {
 
 
 <style>
-
-
 .body_dark {
   background-color: rgb(32, 32, 32);
 }

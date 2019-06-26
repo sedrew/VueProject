@@ -25,6 +25,9 @@
           <b-nav-item>
             <router-link to="/chat" class="nav-link">Chat</router-link>
           </b-nav-item>
+          <b-nav-item>
+            <router-link to="/about" class="nav-link">About</router-link>
+          </b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->

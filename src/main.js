@@ -23,12 +23,12 @@ import Chat from './Pages/Chat.vue'
 Vue.component('Chat', Chat)
 import Palindrome from './Pages/Palindrome.vue'
 Vue.component('Palindrome', Palindrome)
+import About from './Pages/About.vue'
+Vue.component('about',About)
 /////////////////////////////////////////////////////
 //Подключение разных видов бутстрапа
+
 import BootstrapVue from 'bootstrap-vue'
-
-
-
 Vue.use(BootstrapVue)
 import 'bootstrap/dist/css/bootstrap.css'
 import axios from 'axios'
@@ -37,13 +37,7 @@ Vue.use(VueAxios, axios)
 
 
 
-// import 'bootstrap-vue/dist/bootstrap-vue.css'
-// Vue.use(BootstrapVue)
-/////////////////////////////////////////////////
-//Подключение графической библиотеки Uimini
-// import Uimini from 'uimini/dist/css/uimini.css'
-// Vue.use(Uimini)
-///////////////////////////////////////
+
 //Подключение VueRouter
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
@@ -57,6 +51,7 @@ Vue.component('slide-up-down', SlideUpDown)
 //Создание путей роутера.
 var router = new VueRouter({
   routes: [
+    { path: '/about', component: About },
     { path: '/palindrome', component: Palindrome },
     { path: '/chat', component: Chat },
     { path: '/film', component: Film },

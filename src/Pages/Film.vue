@@ -8,6 +8,7 @@
         <h1 class="mb-5">Film Search</h1>
         <div class="inp">
           <input
+            @click="visible=false"
             id="name"
             style="margin-right:10px;"
             class="form-control col-8 col-sm-5 col-md-5 col-lg-5 col-xl-5"
@@ -17,6 +18,15 @@
           <button class="btn btn-primary" @click="axio">Find</button>
         </div>
       </div>
+      <slide-up-down :active="visible">
+        <div
+          class="col-10 col-sm-5 col-md-5 col-lg-5 col-xl-5 container alert alert-danger"
+          role="alert"
+        >
+          <h4 class="alert-heading">Sorry!</h4>По данному запросу ничего не найдено.
+        </div>
+      </slide-up-down>
+
       <div id="movies">
         <div :class="darkTheme" v-for="item in arrTitle" :key="item.id">
           <img :src="item.img">
@@ -35,7 +45,8 @@ export default {
     return {
       name: "",
       arrTitle: [],
-      theme: ""
+      theme: "",
+      visible: false
     };
   },
   methods: {
@@ -48,6 +59,7 @@ export default {
       }).then(response => {
         this.arrTitle = [];
         console.log(response.data.Search);
+        if (response.data.Search == undefined) this.visible = true;
         response.data.Search.forEach(item => {
           console.log(item.Title);
           let x = {
