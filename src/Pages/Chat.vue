@@ -1,5 +1,7 @@
 <template>
   <div id="chat">
+    <card style="margin-top:40px;"></card>
+    <hr>
     <div class="container" style="margin-top:40px;">
       <div class="mb-5 text-center">
         <h1>Chat</h1>

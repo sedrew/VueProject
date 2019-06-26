@@ -34,24 +34,7 @@
       </div>
     </slide-up-down>
 
-    <hr>
-    <div class="container d-flex justify-content-center">
-      <div class="mb-5 col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7">
-        <div class="card" :class="darkCard">
-          <h3 class="card-header">RLE-Сrypt</h3>
-          <div class="card-body">
-            <h4 class="card-title">Run-Length-Encoding :</h4>
-            <p
-              class="card-text"
-            >Алгоритм сжатия данных, заменяющий повторяющиеся символы (серии) на один символ и число его повторов.</p>
-            <a
-              href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%B4%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%B4%D0%BB%D0%B8%D0%BD_%D1%81%D0%B5%D1%80%D0%B8%D0%B9"
-              class="btn btn-primary"
-            >Read More</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <card></card>
   </div>
 </template>
 
@@ -63,13 +46,6 @@ export default {
       str2: "",
       visible: false
     };
-  },
-  computed: {
-    darkCard(){
-      if(this.$store.state.theme=='Dark'){
-        return 'bg-dark'
-      }
-    }
   },
   methods: {
     reset() {
@@ -121,7 +97,7 @@ export default {
         this.str2 = arrRes.join("");
         return 1;
       } else {
-        this.visible=true;
+        this.visible = true;
       }
     }
   }

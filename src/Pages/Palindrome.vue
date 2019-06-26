@@ -25,7 +25,7 @@
         {{mess.text}}
       </div>
     </slide-up-down>
-    
+   <card></card>
   </div>
 </template>
 
@@ -78,8 +78,6 @@ export default {
 </script>
 
 <style>
-
-
 .cont {
   display: flex;
   flex-direction: column;

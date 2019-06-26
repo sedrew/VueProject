@@ -8,6 +8,8 @@ import Nav from './components/Navbar.vue'
 Vue.component('navbar', Nav)
 import Login from './components/Login.vue'
 Vue.component('login', Login)
+import Card from './components/Card.vue'
+Vue.component('card',Card);
 //Подключение стандартных модулей,которые я сам сделал 
 import Index from './Pages/Index.vue'
 Vue.component('Index', Index)

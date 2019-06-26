@@ -23,6 +23,7 @@
         {{text}}
       </div>
     </slide-up-down>
+    <card></card>
   </div>
 </template>
 

@@ -25,10 +25,7 @@ export default {
 
 
 <style>
-hr {
-  margin-top:0rem !important;
-  margin-bottom:2rem !important;
-}
+
 
 .body_dark {
   background-color: rgb(32, 32, 32);
