@@ -25,9 +25,6 @@
           <b-nav-item>
             <router-link to="/chat" class="nav-link">Chat</router-link>
           </b-nav-item>
-          <b-nav-item>
-            <router-link to="/about" class="nav-link">About</router-link>
-          </b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
@@ -131,11 +128,11 @@ export default {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 1px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #e0d6d6;
+  background: #757474;
   border-radius: 5px;
 }
 

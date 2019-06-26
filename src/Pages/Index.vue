@@ -1,8 +1,9 @@
 <template>
   <div style="height:80%">
-    <div class="hello" style="height:100%;">
+    <!-- <div class="hello" style="height:100%;">
       <h1>Welcome, {{nameLogin}}</h1>
-    </div>
+    </div> -->
+    <about></about>
   </div>
 </template>
 
@@ -13,9 +14,7 @@ export default {
     return {};
   },
   computed: {
-    nameLogin() {
-      return this.$store.state.name.toUpperCase();
-    }
+    
   },
   mounted(){
 	  document.body.className="background";

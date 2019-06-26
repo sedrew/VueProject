@@ -13,9 +13,10 @@
             style="margin-right:10px;"
             class="form-control col-8 col-sm-5 col-md-5 col-lg-5 col-xl-5"
             v-model="name"
+            @keyup.enter="axio"
             placeholder="Введите Название Фильма"
           >
-          <button class="btn btn-primary" @click="axio">Find</button>
+          <button class="btn btn-primary"  @click="axio">Find</button>
         </div>
       </div>
       <slide-up-down :active="visible">

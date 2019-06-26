@@ -4,25 +4,33 @@
       <div class="about_project text-center">
         <div class="d-flex justify-content-center" style="width:100%;">
           <div :class="darkJumb" class="jumbotron col-11 col-sm-11 col-md-8">
-            <h1 class="display-3">Hello, world!</h1>
+            <h1 class="display-3">Hello, {{nameLogin}}</h1>
             <p
               class="lead"
             >Данный сайт является не больше,чем просто учебным проектом,он не несет большой смысловой нагрузки или скрытого контекста.</p>
             <hr class="my-2">
-            <p>Если у вас есть желание связаться со мной,то вы можете сделать это нажав на синюю кнопку ниже, with love by kdanet.</p>
-            <p class="lead">
+            <p>Если у вас есть желание связаться со мной,то вы можете сделать это нажав на любую кнопку ниже, with love by kdanet.</p>
+            <p class="lead mt-5">
               <a
-                class="btn btn-primary btn-lg"
                 href="https://vk.com/id172507304"
                 role="button"
-              >Contact Me</a>
+              ><img src="./../assets/vk1.png" width="50px" height="50px;"></a>
+              <a
+                href="https://vk.com/id172507304"
+                role="button"
+              ><img src="./../assets/inst.png" width="50px" height="50px;"></a>
+              <a
+                href="https://vk.com/id172507304"
+                role="button"
+              ><img src="./../assets/tel.png" width="50px" height="50px;"></a>
+              <a
+                href="https://vk.com/id172507304"
+                role="button"
+              ><img src="./../assets/twit.png" width="50px" height="50px;"></a>
             </p>
           </div>
         </div>
       </div>
-
-      <a class="col-8 btn btn-outline-primary" :class="colorLink" href="#techno">Technologies</a>
-
       <div class="technologies">
         <h2 class="mb-5" id="techno">Используемые технологии:</h2>
         <div class="tech">
@@ -78,18 +86,36 @@ export default {
     darkJumb() {
       if (this.$store.state.theme == "Dark") {
         return "bg-dark";
+      } else {
+        return "bg-light font";
       }
-    },
+    }, 
     colorLink() {
       if (this.$store.state.theme == "White") {
         return "link_dark";
       }
+    },
+    nameLogin() {
+      return this.$store.state.name.toUpperCase();
     }
   }
 };
 </script>
 
 <style scoped>
+.lead a {
+  margin-top: 10px;
+  margin-left:5px;
+  margin-right: 5px;
+}
+
+.bg-light {
+    background-color: #f8f9faa1 !important;
+}
+
+.font {
+  color: black;
+}
 
 .link_dark {
   color: rgb(0, 0, 0);
@@ -125,11 +151,11 @@ h3 {
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 0px 0px 220px 0px;
+  margin: 0px 0px 10px 0px;
 }
 
 .technologies {
-  margin-top: 250px;
+  margin-top: 150px;
 }
 
 .tech div {

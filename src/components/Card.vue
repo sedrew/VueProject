@@ -8,12 +8,15 @@
           <div class="card-body">
             <!-- <h4 class="card-title">Run-Length-Encoding :</h4> -->
             <p class="card-text">{{card.text}}</p>
+            <h3>{{card.example.head}}</h3>
+            <p class="card-text">{{card.example.text}}</p>
             <a
+              v-if="card.example.btn"
               :href="card.link"
               class="btn"
               :class="readMore"
               style="width:100%;margin:0;"
-            >Read More</a>
+            >{{card.example.btn_text}}</a>
           </div>
         </div>
       </div>
@@ -29,7 +32,13 @@ export default {
       card: {
         h3: "",
         text: "",
-        link: ""
+        link: "",
+        example: {
+          text: "",
+          head: "",
+          btn: true,
+          btn_text: ""
+        }
       }
     };
   },
@@ -47,39 +56,56 @@ export default {
       }
     },
     hrClass() {
-       if (this.$store.state.theme == "Dark") {
+      if (this.$store.state.theme == "Dark") {
         return "hr_dark";
       }
     }
   },
   mounted() {
     if (this.$route.path.slice(1) == "palindrome") {
+      this.card.example.btn = true;
+      this.card.example.btn_text = "Read More";
+      this.card.example.head = "Примеры:";
+      this.card.example.text = "Шалаш, 1001 , Nigro or gin? , В резерв!  ";
       this.card.h3 = "Palindrome";
       this.card.text =
         "Число, буквосочетание, слово или текст, одинаково читающееся в обоих направлениях.";
       this.card.link =
         "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BB%D0%B8%D0%BD%D0%B4%D1%80%D0%BE%D0%BC";
     } else if (this.$route.path.slice(1) == "RLE") {
+      this.card.example.btn = true;
+      this.card.example.btn_text = "Read More";
+      this.card.example.head = "Примеры:";
+      this.card.example.text = "AAAAAA=A5" + "\n" + "ABCCC=ABC3";
       this.card.h3 = "RLE";
       this.card.text =
         "Алгоритм сжатия данных, заменяющий повторяющиеся символы (серии) на один символ и число его повторов.";
       this.card.link =
         "https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%B4%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%B4%D0%BB%D0%B8%D0%BD_%D1%81%D0%B5%D1%80%D0%B8%D0%B9";
     } else if (this.$route.path.slice(1) == "anagrams") {
+      this.card.example.btn = true;
+      this.card.example.btn_text = "Read More";
+      this.card.example.head = "Примеры:";
+      this.card.example.text =
+        "'Statue of Liberty' и 'Built to stay free' - анаграммы. 'Просветитель' и 'Терпеливость' - анаграммы.";
       this.card.h3 = "Anagrams";
       this.card.text =
         "Литературный приём, состоящий в перестановке букв или звуков определённого слова (или словосочетания), что в результате даёт другое слово или словосочетание.";
       this.card.link =
         "https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0";
     } else if (this.$route.path.slice(1) == "film") {
+      this.card.example.btn = true;
+      this.card.example.btn_text = "Read More";
       this.card.h3 = "Film Search";
       this.card.text =
-        "Минисервис по поиску фильмов с использованием The Open Movie Database.";
+        "Сервис поиска постеров фильмов. Для получения данных используется стороннее API - OMDb API (The Open Movie Database). Запросы к API асинхронные,что помогает избежать полной перезагрузки страницы.";
       this.card.link = "https://www.omdbapi.com/";
     } else if (this.$route.path.slice(1) == "chat") {
+      this.card.example.btn = false;
       this.card.h3 = "Chat";
       this.card.text =
-        "Чат,реализованный на удаленном PHP сервере с использованием баз данных.";
+        "Чат,реализованный на удаленном " +
+        "сервере с использованием баз данных.";
       this.card.link = "https://ru.wikipedia.org/wiki/PHP";
     }
   }
@@ -89,8 +115,8 @@ export default {
 
 <style>
 hr {
-  margin-top:0rem !important;
-  margin-bottom:2rem !important;
+  margin-top: 0rem !important;
+  margin-bottom: 2rem !important;
 }
 
 .hr_dark {

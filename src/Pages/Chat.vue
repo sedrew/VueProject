@@ -2,8 +2,8 @@
   <div id="chat">
     <card style="margin-top:40px;"></card>
     <hr>
-    <div class="container" style="margin-top:40px;">
-      <div class="mb-5 text-center">
+    <div class="container" style="margin-top:0px;">
+      <div class="mb-4 text-center">
         <h1>Chat</h1>
       </div>
       <div class="row">
@@ -43,7 +43,7 @@
 
         <div style="height: 400px;" class="col-lg-6 col-md-8">
           <h3>Сообщения</h3>
-          <div style="padding:30px 30px 30px 30px; border: 1px solid grey; border-radius: 15px;">
+          <div style="padding:30px 30px 30px 30px; margin-bottom:30px; border: 1px solid grey; border-radius: 15px;">
             <div
               id="all_mess"
               style="overflow-y:auto; overflow-x:hidden; height: 350px;border-radius:15px; padding:10px 10px 10px 10px; scrollbar-face-color: black;"
@@ -135,6 +135,9 @@ export default {
 
 
 <style scoped>
+::-webkit-scrollbar {
+  width: 8px;
+}
 .chat {
   overflow-y: hidden;
 }

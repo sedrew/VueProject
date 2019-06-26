@@ -2,8 +2,6 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-
-
 import Nav from './components/Navbar.vue'
 Vue.component('navbar', Nav)
 import Login from './components/Login.vue'
