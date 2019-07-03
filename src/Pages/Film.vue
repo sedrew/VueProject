@@ -3,7 +3,6 @@
     <div>
       <card style="margin-top:40px;"></card>
       <hr>
-      <div class="text-center"></div>
       <div class="container text-center" style="margin-top:40px;">
         <h1 class="mb-5">Film Search</h1>
         <div class="inp">

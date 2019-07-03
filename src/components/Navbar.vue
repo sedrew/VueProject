@@ -25,12 +25,15 @@
           <b-nav-item>
             <router-link to="/chat" class="nav-link">Chat</router-link>
           </b-nav-item>
+          <b-nav-item>
+            <router-link to="/todo" class="nav-link">TODO</router-link>
+          </b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-item right>
-            <button :style="{color: activeColor}" class="btn" >{{nameLogin}}</button>
+            <button :style="{color: activeColor}" class="btn">{{nameLogin}}</button>
             <button
               class="btn"
               :class="themeNav.btn"
@@ -84,12 +87,13 @@ export default {
       }
     },
     loginIn() {
-      if(this.$store.state.login==0) {
-        this.login.showModal=true;
+      if (this.$store.state.login == 0) {
+        this.login.showModal = true;
       } else {
         console.log("Вы уже зашли");
-        this.$store.state.login=0;
-        this.$store.state.name='Guest_'+Math.round(Math.random()*(100-0)+0);
+        this.$store.state.login = 0;
+        this.$store.state.name =
+          "Guest_" + Math.round(Math.random() * (100 - 0) + 0);
       }
     }
   },
@@ -104,18 +108,19 @@ export default {
         return "black";
       } else return "white";
     },
-    loginBtn(){ //Отслеживание надписи Login или Logout
-      if(this.$store.state.login==1) {
-        return this.login.text="Logout"
+    loginBtn() {
+      //Отслеживание надписи Login или Logout
+      if (this.$store.state.login == 1) {
+        return (this.login.text = "Logout");
       } else {
-        return this.login.text="Login"
+        return (this.login.text = "Login");
       }
     },
     loginBtnColor() {
-       if(this.$store.state.login==1) {
-        return "btn-danger"
+      if (this.$store.state.login == 1) {
+        return "btn-danger";
       } else {
-        return "btn-success"
+        return "btn-success";
       }
     }
   }

@@ -107,6 +107,12 @@ export default {
         "Чат,реализованный на удаленном " +
         "сервере с использованием баз данных.";
       this.card.link = "https://ru.wikipedia.org/wiki/PHP";
+    } else if (this.$route.path.slice(1) == "todo") {
+      this.card.example.btn = true;
+      this.card.example.btn_text = "Read More";
+      this.card.h3 = "TODO";
+      this.card.text ="Try To Do Sth ";
+      this.card.link = "https://www.definder.net/TODO/";
     }
   }
 };

@@ -8,6 +8,7 @@ import Login from './components/Login.vue'
 Vue.component('login', Login)
 import Card from './components/Card.vue'
 Vue.component('card',Card);
+
 //Подключение стандартных модулей,которые я сам сделал 
 import Index from './Pages/Index.vue'
 Vue.component('Index', Index)
@@ -23,6 +24,8 @@ import Palindrome from './Pages/Palindrome.vue'
 Vue.component('Palindrome', Palindrome)
 import About from './Pages/About.vue'
 Vue.component('about',About)
+import Todo from './Pages/Todo.vue'
+Vue.component('todo',Todo)
 /////////////////////////////////////////////////////
 //Подключение разных видов бутстрапа
 
@@ -49,6 +52,7 @@ Vue.component('slide-up-down', SlideUpDown)
 //Создание путей роутера.
 var router = new VueRouter({
   routes: [
+    { path: '/todo', component: Todo },
     { path: '/about', component: About },
     { path: '/palindrome', component: Palindrome },
     { path: '/chat', component: Chat },

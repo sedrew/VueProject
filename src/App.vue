@@ -8,29 +8,22 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      theme: {
-        color: "",
-        name: "Dark"
-      }
-    };
-  },
-  methods: {}
+ 
 };
 </script>
 <style>
+
 .body_dark {
   background-color: rgb(32, 32, 32);
 }
 .item-enter-active,
 .item-leave-active {
-  transition: all 0.2s;
+  transition: all 0.3s;
 }
 .item-enter,
 .item-leave-to {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(100px);
 }
 .main-layout {
   position: absolute;
