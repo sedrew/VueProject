@@ -44,19 +44,19 @@ export default {
   },
   computed: {
     darkCard() {
-      if (this.$store.state.theme == "Dark") {
+      if (this.$store.getters.theme.mode == "Dark") {
         return "bg-dark";
       }
     },
     readMore() {
-      if (this.$store.state.theme == "Dark") {
+      if (this.$store.getters.theme.mode == "Dark") {
         return "btn-outline-light";
       } else {
         return "btn-outline-secondary";
       }
     },
     hrClass() {
-      if (this.$store.state.theme == "Dark") {
+      if (this.$store.getters.theme.mode == "Dark") {
         return "hr_dark";
       }
     }

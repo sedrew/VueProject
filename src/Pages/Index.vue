@@ -1,8 +1,5 @@
 <template>
-  <div style="height:80%">
-    <!-- <div class="hello" style="height:100%;">
-      <h1>Welcome, {{nameLogin}}</h1>
-    </div> -->
+  <div style="height:100%;">
     <about></about>
   </div>
 </template>
@@ -35,7 +32,7 @@ export default {
 
 .background {
   width: 100wh;
-  height: 100vh;
+  height: 150vh;
   color: #fff;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;

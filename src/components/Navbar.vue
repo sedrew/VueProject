@@ -1,6 +1,10 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" :type="themeNav.type" :variant="themeNav.color">
+    <b-navbar
+      toggleable="lg"
+      :type="$store.getters.theme.themeNav.type"
+      :variant="$store.getters.theme.themeNav.color"
+    >
       <b-navbar-brand>AgreGator</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -28,17 +32,20 @@
           <b-nav-item>
             <router-link to="/todo" class="nav-link">TODO</router-link>
           </b-nav-item>
+          <b-nav-item>
+            <router-link to="/tictok" class="nav-link">Tic-Tac-Toe</router-link>
+          </b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-item right>
-            <button :style="{color: activeColor}" class="btn">{{nameLogin}}</button>
+            <button :style="{color:activeColor}" class="btn">{{nameLogin}}</button>
             <button
               class="btn"
-              :class="themeNav.btn"
+              :class="$store.getters.theme.themeNav.btn"
               @click="themeChange"
-            >{{this.$store.state.theme}}</button>
+            >{{$store.getters.theme.mode}}</button>
             <button class="btn" :class="loginBtnColor" @click="loginIn">{{loginBtn}}</button>
           </b-nav-item>
         </b-navbar-nav>
@@ -54,70 +61,52 @@ export default {
   data() {
     return {
       login: {
-        showModal: false,
-        text: "Login"
-      },
-      themeNav: {
-        type: "light",
-        color: "light",
-        btn: "btn-dark"
+        showModal: false
       }
     };
   },
   methods: {
     //Логика смены темного и светлого режима
     themeChange() {
-      if (this.$store.state.theme == "White" || this.$store.state.theme == "") {
-        //Изменение Vuex темы,для дальнейшей работы background
-        this.$store.state.theme = "Dark";
-        //Изменение Vuex типа,для дальнейшей работы со цветом текста в навбаре
-        this.themeNav.type = "dark";
-        //Изменение Vuex типа,для дальнейшей работы со цветом текста на всей странице
-        this.themeNav.color = "dark";
-        //Изменение Vuex типа,для дальнейшей работы с кнопкой смены темы
-        this.themeNav.btn = "btn-light";
-        //Добавление body класса с темной темой, класс прописан в App.vue
-        document.body.className = "body_dark";
-      } else if (this.$store.state.theme == "Dark") {
-        this.$store.state.theme = "White";
-        this.themeNav.type = "light";
-        this.themeNav.color = "light";
-        this.themeNav.btn = "btn-dark";
-        document.body.className = "";
+      console.log(this.$store.getters.theme.mode);
+      if (this.$store.getters.theme.mode == "White") {
+        this.$store.commit("changeTheme");
+        
+      } else if (this.$store.getters.theme.mode == "Dark") {
+        this.$store.commit("changeTheme");
+       
       }
     },
     loginIn() {
-      if (this.$store.state.login == 0) {
+      if (this.$store.getters.login == 0) {
         this.login.showModal = true;
       } else {
         console.log("Вы уже зашли");
-        this.$store.state.login = 0;
-        this.$store.state.name =
-          "Guest_" + Math.round(Math.random() * (100 - 0) + 0);
+        this.$store.commit("loginIn");
       }
     }
   },
   computed: {
     nameLogin() {
       //Возвращенеи из стора Никнейма
-      return this.$store.state.name;
+      return this.$store.getters.name;
     },
     activeColor() {
       //Вычисление какой цвет использовать для Никнейма в навбаре
-      if (this.$store.state.theme == "White" || this.$store.state.theme == "") {
+      if (this.$store.getters.theme.mode == "White") {
         return "black";
       } else return "white";
     },
     loginBtn() {
       //Отслеживание надписи Login или Logout
-      if (this.$store.state.login == 1) {
-        return (this.login.text = "Logout");
+      if (this.$store.getters.login == 1) {
+        return "Logout";
       } else {
-        return (this.login.text = "Login");
+        return "Login";
       }
     },
     loginBtnColor() {
-      if (this.$store.state.login == 1) {
+      if (this.$store.getters.login == 1) {
         return "btn-danger";
       } else {
         return "btn-success";

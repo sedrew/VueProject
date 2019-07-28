@@ -1,5 +1,5 @@
 <template>
-  <div :class="this.$store.state.theme" id="qwe" class="main-layout" style="height:100%">
+  <div :class="this.$store.getters.theme.mode" id="qwe" class="main-layout" style="height:100%">
     <navbar></navbar>
     <transition name="item" mode="out-in">
       <router-view></router-view>

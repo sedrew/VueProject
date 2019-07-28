@@ -24,13 +24,11 @@ export default {
   methods: {
     ok() {
       if (this.name != "" && this.name != " " && this.name.length > 3) {
-        this.$store.state.name = this.name;
-        this.$store.state.login = 1;
+        this.$store.commit('loginIn',this.name)
         this.$emit("closeModal", false);
       }
     },
     close() {
-      this.$store.state.login = 0;
       this.$emit("closeModal", false);
     }
   }

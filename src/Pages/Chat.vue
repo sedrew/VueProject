@@ -1,7 +1,7 @@
 <template>
   <div id="chat">
     <card style="margin-top:40px;"></card>
-    <hr>
+    <hr />
     <div class="container" style="margin-top:0px;">
       <div class="mb-4 text-center">
         <h1>Chat</h1>
@@ -15,13 +15,13 @@
           <input
             type="text"
             name="name"
-            v-model="message.name"
+            v-model="test"
             id="name"
             placeholder="Введите имя"
             class="form-control"
             @click="visible_err=false"
-          >
-          <br>
+          />
+          <br />
           <label for="message">Сообщение</label>
           <textarea
             name="message"
@@ -30,10 +30,10 @@
             class="form-control"
             placeholder="Введите сообщение"
           ></textarea>
-          <br>
+          <br />
           <button id="submit" @click="sendMess" class="btn btn-success">Отправить</button>
-          <br>
-          <br>
+          <br />
+          <br />
           <slide-up-down :active="visible_err">
             <div id="err" class="alert alert-warning" role="alert">
               <strong>Error!</strong> Обязательно введите Имя и текст Сообщения.
@@ -43,7 +43,9 @@
 
         <div style="height: 400px;" class="col-lg-6 col-md-8">
           <h3>Сообщения</h3>
-          <div style="padding:30px 30px 30px 30px; margin-bottom:30px; border: 1px solid grey; border-radius: 15px;">
+          <div
+            style="padding:30px 30px 30px 30px; margin-bottom:30px; border: 1px solid grey; border-radius: 15px;"
+          >
             <div
               id="all_mess"
               style="overflow-y:auto; overflow-x:hidden; height: 350px;border-radius:15px; padding:10px 10px 10px 10px; scrollbar-face-color: black;"
@@ -81,9 +83,9 @@ export default {
       axios({
         method: "POST",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
+          "Content-Type": "application/json"
         },
-        url: "http://v123807.hosted-by-vdsina.ru/tmpl/db_chat_mess.php",
+        url: "https://hidden-stream-65126.herokuapp.com/allMess",
         data: {}
       }).then(response => {
         response.data.forEach(item => {
@@ -101,10 +103,10 @@ export default {
         axios({
           method: "POST",
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/json"
           },
-          url: "http://v123807.hosted-by-vdsina.ru/tmpl/db_chat.php",
-          data: q
+          url: "https://hidden-stream-65126.herokuapp.com/mess",
+          data: this.message
         }).then(response => {
           this.checkMess();
           this.message.text_mess = "";
@@ -119,7 +121,6 @@ export default {
   },
   mounted() {
     this.checkMess();
-    this.message.name = this.$store.state.name;
   },
   updated() {
     var block = document.getElementById("all_mess");
@@ -127,7 +128,7 @@ export default {
   },
   computed: {
     test() {
-      return this.$store.state.name;
+      return (this.message.name = this.$store.getters.name);
     }
   }
 };
