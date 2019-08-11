@@ -84,19 +84,19 @@ export default {
   },
   computed: {
     darkJumb() {
-      if (this.$store.state.theme == "Dark") {
+      if (this.$store.getters.theme.mode == "Dark") {
         return "bg-dark";
       } else {
         return "bg-light font";
       }
     }, 
     colorLink() {
-      if (this.$store.state.theme == "White") {
+      if (this.$store.getters.theme.mode == "White") {
         return "link_dark";
       }
     },
     nameLogin() {
-      return this.$store.state.name.toUpperCase();
+      return this.$store.getters.name.toUpperCase();
     }
   }
 };

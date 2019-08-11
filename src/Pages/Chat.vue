@@ -36,7 +36,7 @@
           <br />
           <slide-up-down :active="visible_err">
             <div id="err" class="alert alert-warning" role="alert">
-              <strong>Error!</strong> Обязательно введите Имя и текст Сообщения.
+              <strong @click="visible_err=false">Error!</strong> Обязательно введите Имя и текст Сообщения.
             </div>
           </slide-up-down>
         </div>
@@ -52,7 +52,7 @@
             >
               <div class="mess" v-for="item in mess" :key="item.id">
                 <span class="badge badge-danger">{{item.name}}</span>
-                <p class="text">{{item.text}}</p>
+                <p class="text">{{item.text_mess}}</p>
               </div>
             </div>
           </div>
@@ -85,32 +85,22 @@ export default {
         headers: {
           "Content-Type": "application/json"
         },
-        url: "https://hidden-stream-65126.herokuapp.com/allMess",
+        url: "http://kdanet.ddns.net/allMess",
         data: {}
       }).then(response => {
         response.data.forEach(item => {
           let x = {
             name: item.name,
-            text: item.text
+            text_mess: item.text_mess
           };
           this.mess.push(x);
         });
       });
     },
     sendMess() {
-      let q = this.message;
-      if (q.text_mess != "" && q.name != "") {
-        axios({
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          url: "https://hidden-stream-65126.herokuapp.com/mess",
-          data: this.message
-        }).then(response => {
-          this.checkMess();
-          this.message.text_mess = "";
-        });
+      if (this.message.name != "" && this.message.text_mess != "") {
+        this.$socket.emit("sendMess", this.message);
+        this.message.text_mess = "";
       } else {
         this.visible_err = true;
         setTimeout(() => {
@@ -130,6 +120,16 @@ export default {
     test() {
       return (this.message.name = this.$store.getters.name);
     }
+  },
+  sockets: {
+    connect: () => {
+      console.log("Подключение прошло успешно");
+    }
+  },
+  created() {
+    this.sockets.subscribe("addMess", data => {
+      this.mess.push(data);
+    });
   }
 };
 </script>

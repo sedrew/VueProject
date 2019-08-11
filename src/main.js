@@ -7,8 +7,9 @@ Vue.component('navbar', Nav)
 import Login from './components/Login.vue'
 Vue.component('login', Login)
 import Card from './components/Card.vue'
-Vue.component('card',Card);
-
+Vue.component('card', Card);
+import Test from './components/Test.vue'
+Vue.component('test',Test)
 //Подключение стандартных модулей,которые я сам сделал 
 import Index from './Pages/Index.vue'
 Vue.component('Index', Index)
@@ -23,11 +24,12 @@ Vue.component('Chat', Chat)
 import Palindrome from './Pages/Palindrome.vue'
 Vue.component('Palindrome', Palindrome)
 import About from './Pages/About.vue'
-Vue.component('about',About)
+Vue.component('about', About)
 import Todo from './Pages/Todo.vue'
-Vue.component('todo',Todo)
+Vue.component('todo', Todo)
 import Tictok from './Pages/Tictok.vue'
-Vue.component('tictok',Tictok)
+Vue.component('tictok', Tictok)
+
 /////////////////////////////////////////////////////
 //Подключение разных видов бутстрапа
 
@@ -37,7 +39,16 @@ import 'bootstrap/dist/css/bootstrap.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios)
-
+import VueSocketIO from 'vue-socket.io'
+Vue.use(new VueSocketIO({
+  debug: false,
+  connection: 'http://kdanet.ddns.net',
+  vuex: {
+    store,
+    actionPrefix: 'SOCKET_',
+    mutationPrefix: 'SOCKET_'
+  }
+}))
 
 
 

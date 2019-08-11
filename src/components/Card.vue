@@ -7,9 +7,9 @@
           <h3 class="card-header">{{card.h3}}</h3>
           <div class="card-body">
             <!-- <h4 class="card-title">Run-Length-Encoding :</h4> -->
-            <p class="card-text">{{card.text}}</p>
+            <p class="card-text" v-html="card.text"></p>
             <h3>{{card.example.head}}</h3>
-            <p class="card-text">{{card.example.text}}</p>
+            <p class="card-text" v-html="card.example.text"></p>
             <a
               v-if="card.example.btn"
               :href="card.link"
@@ -76,7 +76,7 @@ export default {
       this.card.example.btn = true;
       this.card.example.btn_text = "Read More";
       this.card.example.head = "Примеры:";
-      this.card.example.text = "AAAAAA=A5" + "\n" + "ABCCC=ABC3";
+      this.card.example.text = "AAAAAA=A5" + "<br>" + "ABCCC=ABC3";
       this.card.h3 = "RLE";
       this.card.text =
         "Алгоритм сжатия данных, заменяющий повторяющиеся символы (серии) на один символ и число его повторов.";
@@ -87,7 +87,7 @@ export default {
       this.card.example.btn_text = "Read More";
       this.card.example.head = "Примеры:";
       this.card.example.text =
-        "'Statue of Liberty' и 'Built to stay free' - анаграммы. 'Просветитель' и 'Терпеливость' - анаграммы.";
+        "'Statue of Liberty' и 'Built to stay free' - анаграммы." +'<br>'+ "'Просветитель' и 'Терпеливость' - анаграммы.";
       this.card.h3 = "Anagrams";
       this.card.text =
         "Литературный приём, состоящий в перестановке букв или звуков определённого слова (или словосочетания), что в результате даёт другое слово или словосочетание.";
@@ -98,14 +98,14 @@ export default {
       this.card.example.btn_text = "Read More";
       this.card.h3 = "Film Search";
       this.card.text =
-        "Сервис поиска постеров фильмов. Для получения данных используется стороннее API - OMDb API (The Open Movie Database). Запросы к API асинхронные,что помогает избежать полной перезагрузки страницы.";
+        "Сервис поиска постеров фильмов. Для получения данных используется стороннее <strong style='color:green'>API-OMDB</strong> (The Open Movie Database). Запросы к API асинхронные,что помогает избежать полной перезагрузки страницы.";
       this.card.link = "https://www.omdbapi.com/";
     } else if (this.$route.path.slice(1) == "chat") {
       this.card.example.btn = false;
       this.card.h3 = "Chat";
       this.card.text =
         "Чат,реализованный на удаленном " +
-        "сервере с использованием баз данных.";
+        "сервере с использованием <strong style='color:green'>LowDB</strong> и "+"<strong style='color:green'>Socket.io</strong>";
       this.card.link = "https://ru.wikipedia.org/wiki/PHP";
     } else if (this.$route.path.slice(1) == "todo") {
       this.card.example.btn = true;
