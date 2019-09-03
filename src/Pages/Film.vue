@@ -2,7 +2,7 @@
   <transition name="item">
     <div>
       <card style="margin-top:40px;"></card>
-      <hr>
+      <hr />
       <div class="container text-center" style="margin-top:40px;">
         <h1 class="mb-5">Film Search</h1>
         <div class="inp">
@@ -14,8 +14,8 @@
             v-model="name"
             @keyup.enter="axio"
             placeholder="Введите Название Фильма"
-          >
-          <button class="btn btn-primary"  @click="axio">Find</button>
+          />
+          <button class="btn btn-primary" @click="axio">Find</button>
         </div>
       </div>
       <slide-up-down :active="visible">
@@ -29,7 +29,7 @@
 
       <div id="movies">
         <div :class="darkTheme" v-for="item in arrTitle" :key="item.id">
-          <img :src="item.img">
+          <img :src="item.img" />
           <p class="title">{{item.title}}</p>
           <p class="year">{{item.year}}</p>
         </div>
@@ -75,7 +75,7 @@ export default {
   },
   computed: {
     darkTheme() {
-      if (this.$store.state.theme == "Dark") return "movie_dark";
+      if (this.$store.getters.theme.mode == "Dark") return "movie_dark";
       else return "movie";
     }
   }
@@ -113,6 +113,8 @@ export default {
 }
 
 .movie_dark {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,6 +124,9 @@ export default {
   border-radius: 15px;
   margin: 0px 10px 30px 10px;
   color: white;
+}
+.movie_dark:hover {
+  box-shadow: 0 14px 28px rgba(153, 121, 121, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .movie:hover {

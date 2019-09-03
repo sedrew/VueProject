@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
+import axios from "axios";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   plugins: [createPersistedState()],
+  actions: {
+    
+  },
   mutations: {
     changeTheme(state) {
       if (state.theme.mode == 'White') {
@@ -12,14 +16,14 @@ export default new Vuex.Store({
         state.theme.themeNav.type = 'dark';
         state.theme.themeNav.color = 'dark';
         state.theme.themeNav.btn = 'btn-dark';
-        document.body.className = "body_dark";
+        document.body.classList.add('body_dark');
 
       } else {
         state.theme.mode = 'White';
         state.theme.themeNav.type = 'light';
         state.theme.themeNav.color = 'light';
         state.theme.themeNav.btn = 'btn-light';
-        document.body.className = "";
+        document.body.classList.remove('body_dark');
       }
     },
 

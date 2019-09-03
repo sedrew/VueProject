@@ -123,7 +123,7 @@ export default {
   },
   sockets: {
     connect: () => {
-      console.log("Подключение прошло успешно");
+      console.log("Socket Chat: Подключение к чату прошло успешно.");
     }
   },
   created() {

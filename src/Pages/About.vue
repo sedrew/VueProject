@@ -131,6 +131,7 @@ a {
 .block {
   width: 100%;
   height: 100%;
+  
 }
 h3 {
   margin: 0;

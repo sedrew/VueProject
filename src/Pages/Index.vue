@@ -10,15 +10,16 @@ export default {
   data() {
     return {};
   },
-  computed: {
-    
+  computed: {},
+  mounted() {
+    if (this.$store.getters.theme.mode != "Dark") {
+      document.body.classList.add("background");
+    }
   },
-  mounted(){
-	  document.body.className="background";
-  },
-  destroyed(){
-	  document.body.classList.remove('background');
-  }  
+  updated() {},
+  destroyed() {
+    document.body.classList.remove("background");
+  }
 };
 </script>
 

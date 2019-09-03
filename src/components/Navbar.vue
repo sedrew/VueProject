@@ -12,16 +12,20 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item>
-            <router-link to="/index" class="nav-link">Home</router-link>
+            <router-link to="/home" class="nav-link">Home</router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link to="/RLE" class="nav-link">RLE-Crypt</router-link>
-          </b-nav-item>
-          <b-nav-item>
-            <router-link to="/anagrams" class="nav-link">Anagrams</router-link>
-          </b-nav-item>
-          <b-nav-item>
-            <router-link to="/palindrome" class="nav-link">Palindrome</router-link>
+            <b-nav-item-dropdown text="Teech">
+              <b-dropdown-item>
+                <router-link to="/RLE" class="nav-link">RLE-Crypt</router-link>
+              </b-dropdown-item>
+              <b-dropdown-item>
+                <router-link to="/palindrome" class="nav-link">Palindrome</router-link>
+              </b-dropdown-item>
+              <b-dropdown-item>
+                <router-link to="/anagrams" class="nav-link">Anagrams</router-link>
+              </b-dropdown-item>
+            </b-nav-item-dropdown>
           </b-nav-item>
           <b-nav-item>
             <router-link to="/film" class="nav-link">Film-Search</router-link>
@@ -40,17 +44,22 @@
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-item right>
+            <button :style="{color:activeColor}" class="btn">Users Online: {{users}}</button>
             <button :style="{color:activeColor}" class="btn">{{nameLogin}}</button>
             <button
               class="btn"
               :class="$store.getters.theme.themeNav.btn"
               @click="themeChange"
             >{{$store.getters.theme.mode}}</button>
+
+            <button @click="signIn" v-if="$store.getters.login==0" class="btn btn-primary">Sign In</button>
+
             <button class="btn" :class="loginBtnColor" @click="loginIn">{{loginBtn}}</button>
           </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+    <registration @closeModal="registration.showModal=false" v-if="registration.showModal"></registration>
     <login @closeModal="login.showModal=false" v-if="login.showModal"></login>
   </div>
 </template>
@@ -60,10 +69,19 @@ import { setTimeout } from "timers";
 export default {
   data() {
     return {
+      registration : {
+        showModal:false
+      },
       login: {
         showModal: false
-      }
+      },
+      users: 0
     };
+  },
+  sockets: {
+    connect: () => {
+      console.log("Socket Navbar: подключение к счетчику прошло успешно");
+    }
   },
   methods: {
     //Логика смены темного и светлого режима
@@ -71,10 +89,8 @@ export default {
       console.log(this.$store.getters.theme.mode);
       if (this.$store.getters.theme.mode == "White") {
         this.$store.commit("changeTheme");
-        
       } else if (this.$store.getters.theme.mode == "Dark") {
         this.$store.commit("changeTheme");
-       
       }
     },
     loginIn() {
@@ -83,6 +99,11 @@ export default {
       } else {
         console.log("Вы уже зашли");
         this.$store.commit("loginIn");
+      }
+    },
+    signIn() {
+      if(this.$store.getters.login==0) {
+        this.registration.showModal = true;
       }
     }
   },
@@ -102,7 +123,7 @@ export default {
       if (this.$store.getters.login == 1) {
         return "Logout";
       } else {
-        return "Login";
+        return "Sign Up";
       }
     },
     loginBtnColor() {
@@ -112,6 +133,29 @@ export default {
         return "btn-success";
       }
     }
+  },
+  mounted() {
+    if (this.$store.getters.theme.mode == "Dark") {
+      let x = document.querySelector(".dropdown-menu");
+      x.style.backgroundColor = "#343a40";
+    }
+  },
+  created() {
+    this.sockets.subscribe("usersCount", data => {
+      this.users = data;
+    });
+  },
+  updated() {
+    //Смена темной темы
+    if (this.$store.getters.theme.mode == "Dark") {
+      let x = document.querySelector(".dropdown-menu");
+      x.style.backgroundColor = "#343a40";
+    } else {
+      let x = document.querySelector(".dropdown-menu");
+      let y = document.querySelector(".dropdown-menu .nav-link");
+      x.style.backgroundColor = "#FFFFFF";
+      y.style.color = "rgba(255, 255, 255, 0.5) !important";
+    }
   }
 };
 </script>
@@ -119,6 +163,10 @@ export default {
 <style>
 .router-link-active {
   font-weight: 600;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0) !important;
 }
 
 ::-webkit-scrollbar {

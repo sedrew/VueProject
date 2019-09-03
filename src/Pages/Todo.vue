@@ -10,7 +10,7 @@
           class="form-control col-8 col-sm-5 col-md-5 col-lg-5 col-xl-5"
           @keyup.enter="sub"
         />
-        <button @click="sub" class="btn btn-primary">Создать</button>
+        <button @click="sub" class="btn btn-primary">Create</button>
       </div>
     </div>
 

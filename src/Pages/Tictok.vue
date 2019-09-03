@@ -19,6 +19,7 @@
         <div class="switch-btn" @click="addClass"></div>
       </div>
     </div>
+    
   </div>
 </template>
 

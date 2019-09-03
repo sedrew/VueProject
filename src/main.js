@@ -10,6 +10,8 @@ import Card from './components/Card.vue'
 Vue.component('card', Card);
 import Test from './components/Test.vue'
 Vue.component('test',Test)
+import Registration from './components/Registration.vue'
+Vue.component('registration',Registration)
 //Подключение стандартных модулей,которые я сам сделал 
 import Index from './Pages/Index.vue'
 Vue.component('Index', Index)
@@ -65,6 +67,7 @@ Vue.component('slide-up-down', SlideUpDown)
 //Создание путей роутера.
 var router = new VueRouter({
   routes: [
+    { path: '/test', component: Test },
     { path: '/tictok', component: Tictok },
     { path: '/todo', component: Todo },
     { path: '/about', component: About },
