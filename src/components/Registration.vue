@@ -5,7 +5,7 @@
       <label for="name">Введите ваше Имя</label>
       <input id="name" v-model="name" @input="err.status=false" class="form-control" />
       <label for="password">Придумайте пароль</label>
-      <input id="password" v-model="password" class="form-control" />
+      <input type='password' id="password" v-model="password" class="form-control" />
       <br />
       <slide-up-down :active="err.status">
         <div class="alert alert-danger">

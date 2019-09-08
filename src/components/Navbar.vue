@@ -39,6 +39,9 @@
           <b-nav-item>
             <router-link to="/tictok" class="nav-link">Tic-Tac-Toe</router-link>
           </b-nav-item>
+          <b-nav-item v-if="$store.state.admin!=null"> 
+            <router-link to="/panel" class="nav-link">AD-Panel</router-link>
+          </b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->

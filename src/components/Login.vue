@@ -4,8 +4,8 @@
       <h2>Sign Up</h2>
       <label for="name">Введите ваше Имя</label>
       <input id="name" v-model="name" class="form-control" />
-      <label for="password">Введите ваш пароль.</label>
-      <input id="password" v-model="password" class="form-control" />
+      <label  for="password">Введите ваш пароль.</label>
+      <input type='password' id="password" v-model="password" class="form-control" />
       <br />
       <slide-up-down :active="err">
         <div class="alert alert-danger">

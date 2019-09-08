@@ -31,7 +31,8 @@ import Todo from './Pages/Todo.vue'
 Vue.component('todo', Todo)
 import Tictok from './Pages/Tictok.vue'
 Vue.component('tictok', Tictok)
-
+import Panel from './Pages/Admin/Panel.vue'
+Vue.component('panel', Panel)
 /////////////////////////////////////////////////////
 //Подключение разных видов бутстрапа
 
@@ -66,8 +67,10 @@ Vue.component('slide-up-down', SlideUpDown)
 
 //Создание путей роутера.
 var router = new VueRouter({
+  mode:'history',
   routes: [
     { path: '/test', component: Test },
+    { path: '/panel', component: Panel },
     { path: '/tictok', component: Tictok },
     { path: '/todo', component: Todo },
     { path: '/about', component: About },

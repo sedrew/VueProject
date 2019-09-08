@@ -1,13 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
-import axios from "axios";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   plugins: [createPersistedState()],
   actions: {
-    
+
   },
   mutations: {
     changeTheme(state) {
@@ -29,11 +28,15 @@ export default new Vuex.Store({
 
     loginIn(state, payload) {
       if (state.login == 0) {
+        if (payload == 'Danet') {
+          state.admin = 1;
+        }
         state.name = payload
         state.login = 1;
       } else {
         state.name = 'Guest_' + Math.round(Math.random() * (100 - 0) + 0);
         state.login = 0;
+        state.admin=null;
       }
     }
   },
@@ -48,6 +51,7 @@ export default new Vuex.Store({
     },
     name: 'Guest_' + Math.round(Math.random() * (100 - 0) + 0),
     login: 0,
+    admin: null
   },
   getters: {
     login(state) {
